@@ -19,11 +19,11 @@
       color: var(--color-one);
       cursor: pointer;
       transition: all 0.3s;
-        &:hover {
-            background:var(--background-two);
-            color: #000;
-            scale: 1.1;
-        }
+      &:hover {
+        background: var(--background-two);
+        color: #000;
+        scale: 1.1;
+      }
     }
   }
 }
