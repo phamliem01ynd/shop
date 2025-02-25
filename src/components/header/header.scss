@@ -1,0 +1,24 @@
+.header {
+  width: 90vw;
+  height: auto;
+  margin: 0 auto;
+  &__search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 30rem;
+    height: auto;
+    .icon{
+        position: absolute;
+        text-align: center;
+        right: 0%;
+        padding: 5px 20px 5px 20px;
+        background: #000;
+        border-radius: 1rem;
+        color: var(--color-one);
+        cursor: pointer;
+    }
+  }
+}
+
