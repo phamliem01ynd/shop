@@ -5,9 +5,12 @@ import reportWebVitals from "./reportWebVitals";
 import "../src/components/globalStyle.scss";
 import { RouterProvider } from "react-router-dom";
 import { routes } from "./routes/router";
+import { AuthWrapper } from "./components/context/authContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <RouterProvider router={routes}/>
+  <AuthWrapper>
+    <RouterProvider router={routes} />
+  </AuthWrapper>
 );
 
 // If you want to start measuring performance in your app, pass a function
