@@ -15,6 +15,19 @@ const createUserApi = async (email, name, password) => {
   }
 };
 
+const loginApi = async (email, password) => {
+  try {
+    const URL_API = "api/login";
+    const data = {
+      email,
+      password,
+    };
+    return axios.post(URL_API, data);
+  } catch (error) {
+    console.log("loi khi call Api >>>:", error);
+  }
+};
+
 const getProducts = async () => {
   try {
     const url_api = "/api/product";
@@ -33,4 +46,4 @@ const getCategories = async () => {
     throw error;
   }
 };
-export { createUserApi, getProducts, getCategories };
+export { createUserApi, getProducts, getCategories, loginApi };

@@ -1,64 +1,55 @@
 import { Button, Form, Input, notification } from "antd";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import "./login.scss";
-import { authContext } from "../../components/context/authContext";
-import { loginApi } from "../../utils/api";
-import "@ant-design/v5-patch-for-react-19";
-const Login = () => {
+import { Link, useNavigate } from "react-router-dom";
+import "./register.scss";
+import { createUserApi } from "../../utils/api";
+const Register = () => {
   const navigate = useNavigate();
-  const { setAuth } = useContext(authContext);
-  const [isLogin, setIsLogin] = useState(false);
-  const onFinish = async (values) => {
-    const { email, password } = values;
-    const result = await loginApi(email, password);
-    if (result && result.EC === 0) {
-      localStorage.setItem("access_token", result.access_token);
-      localStorage.setItem("showConfetti", "true");
-      setIsLogin(true);
-      setTimeout(() => {
-        setIsLogin(false);
-      }, 5000);
+  const onFinish = async (value) => {
+    const { name, email, password } = value;
+    const result = await createUserApi(name, email, password);
+    if (result) {
       notification.success({
-        message: "Đăng nhập",
-        description: "Đăng nhập thành công ",
+        message: "Đăng ký",
+        description: "Đăng ký thành công",
       });
-      setAuth({
-        isAuthenticated: true,
-        user: {
-          email: result?.user?.email ?? "",
-          name: result?.user?.name ?? "",
-        },
-      });
-      navigate("/");
+      navigate("/login");
     } else {
       notification.error({
-        message: "Đăng nhập",
-        description: result?.message ?? "Đăng nhập thất bại",
+        message: "Đăng ký",
+        description: "Đăng ký thật bại",
       });
     }
   };
   return (
     <>
-      <div>
-        <Link to="/">Home</Link>/ Login
-      </div>
       <div className="login">
         <div className="container">
           <div className="container__form">
-            <h1>Đăng nhập</h1>
+            <h1>Đăng ký</h1>
             <div className="social-icon">
               <FaFacebook className="icon" />
               <FaGoogle className="icon" />
               <FaGithub className="icon" />
               <FaLinkedin className="icon" />
             </div>
-            <p>Hoặc sử dụng email để đăng nhập</p>
-            <Form layout="vertical" name="login" onFinish={onFinish}>
+            <p>Hoặc sử dụng email để đăng ký</p>
+            <Form layout="vertical" name="register" onFinish={onFinish}>
+              <Form.Item
+                name="name"
+                rules={[
+                  {
+                    required: true,
+                    message: "Làm ơn nhập name",
+                  },
+                ]}
+              >
+                <Input type="text" placeholder="name" />
+              </Form.Item>
               <Form.Item
                 name="email"
                 rules={[
@@ -92,11 +83,11 @@ const Login = () => {
             </Form>
           </div>
           <div className="container__title">
-            <h1>Webcome back</h1>
-            <p>Vui lòng đăng nhập tài khoản để sử dụng toàn bộ tính năng</p>
-            <Link to="/register">
+            <h1>Webcome to</h1>
+            <p>Vui lòng đăng ký tài khoản để sử dụng toàn bộ tính năng</p>
+            <Link to="/login">
               <Button className="hiddent" id="register">
-                Đăng ký
+                Đăng nhập
               </Button>
             </Link>
           </div>
@@ -106,4 +97,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
