@@ -1,0 +1,211 @@
+.product {
+  position: relative;
+  width: 100%;
+  height: auto;
+  &__list {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #9a9696a9;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    position: relative;
+    &:hover {
+      .icon {
+        display: block;
+        transition: transform 0.2s linear;
+      }
+    }
+  }
+  &.exiting {
+    .product__list {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  .icon {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    position: absolute;
+    right: 5%;
+    display: none;
+    cursor: pointer;
+    transform: rotateX(20deg);
+    .icon1 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #000;
+      transition: transform 0.3s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+        background: var(--background-two);
+        color: #000;
+      }
+    }
+    .icon2 {
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #000;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+        background: var(--background-two);
+        color: #000;
+      }
+    }
+  }
+  &__image {
+    width: 40%;
+    height: auto;
+    img {
+      width: 140px;
+      height: 155px;
+      background-color: #fff;
+      object-fit: contain;
+      transition: transform 0.2s ease-in;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__title {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0px 20px 10px 20px;
+    button {
+      background: #000;
+      position: relative;
+      color: #fff;
+      text-align: center !important;
+      span {
+        margin: 0;
+      }
+    }
+    .name {
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .quantity {
+      color: #ec5757eb;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    * {
+      margin-top: 10px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    justify-content: space-between;
+
+    .oldprice {
+      color: #000;
+      font-size: 12px;
+      font-weight: bold;
+      text-decoration: line-through;
+    }
+
+    .newprice {
+      color: red;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+
+  .btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 999;
+    &:hover {
+      background: var(--background-two);
+    }
+  }
+  .btn-return {
+    left: 0;
+  }
+  .btn-next {
+    right: 0;
+  }
+}
+
+.productDetail {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 60%;
+  &__image {
+    width: 40%;
+    text-align: center;
+    img {
+      width: 100%;
+      height: auto;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+  }
+  &__name {
+    margin-top: 20px;
+    color: #000;
+    font-weight: 500;
+    font-size: 20px;
+  }
+  &__about {
+    width: 60%;
+    margin-left: 40px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  &__type {
+    margin-bottom: 20px;
+  }
+  &__cate {
+    margin-bottom: 20px;
+  }
+  &__oldprice {
+    color: #000;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: rgb(8, 226, 55);
+    text-decoration: line-through;
+  }
+  &__discount {
+    color: #000;
+    margin-bottom: 10px;
+    color: red;
+    font-size: 14px;
+  }
+  &__newprice {
+    color: #000;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: rgb(233, 18, 115);
+  }
+  &__des {
+    font-size: 12px;
+    color: #000;
+    opacity: 0.6;
+    margin-bottom: 10px;
+  }
+}

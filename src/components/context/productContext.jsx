@@ -6,7 +6,7 @@ export const ProductWrapper = ({ children }) => {
     const [product, setProduct] = useState([]);
     useEffect(() => {
         const fetchAPi = async () => {
-            const result = getProducts();
+            const result = await getProducts();
             setProduct(result);
         }
         fetchAPi();

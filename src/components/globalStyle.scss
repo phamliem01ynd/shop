@@ -18,6 +18,7 @@ body {
   background-color: var(--background-one);
   color: var(--color-two);
   text-rendering: optimizeSpeed;
+  overflow-x: hidden;
 }
 * {
   box-sizing: border-box;

@@ -2,11 +2,9 @@ import React, { useContext } from "react";
 import { categoryContext } from "../context/categoryContext";
 import { Col, Row } from "antd";
 import "./category.scss";
-
+import { Link } from "react-router-dom";
 const Category = () => {
   const { category } = useContext(categoryContext);
-  console.log(category);
-
   return (
     <>
       <div className="category">
@@ -14,9 +12,11 @@ const Category = () => {
           {category.map((item, index) => (
             <Col xxl={2} xl={2} lg={2} md={4} sm={4} xs={8} key={item.id}>
               <div className="category__list">
-                <div className="image">
-                  <img src={item.image} alt={item.name} />
-                </div>
+                <Link to={"/category/" + item?.name}>
+                  <div className="image">
+                    <img src={item.image} alt={item.name} />
+                  </div>
+                </Link>
                 <p>{item.name}</p>
               </div>
             </Col>
