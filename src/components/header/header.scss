@@ -1,7 +1,24 @@
+header {
+  width: 100vw;
+  max-height: 12rem;
+  min-height: 8rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: sticky;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
 .header {
-  width: 90vw;
-  height: auto;
+  width: 90%;
   margin: 0 auto;
+  .ant-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   &__search {
     display: flex;
     align-items: center;
@@ -9,11 +26,14 @@
     position: relative;
     width: 30rem;
     height: auto;
+    input::placeholder {
+      color: #000;
+    }
     .icon {
       position: absolute;
       text-align: center;
-      right: 0%;
-      padding: 5px 20px 5px 20px;
+      right: -1%;
+      padding: 2px 18px 2px 18px;
       background: #000;
       border-radius: 1rem;
       color: var(--color-one);
@@ -26,5 +46,63 @@
       }
     }
   }
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    .ant-select {
+      margin-right: 1.5rem;
+    }
+    .loginNoActive {
+      button:nth-child(1) {
+        margin-left: 1.5rem;
+      }
+    }
+  }
+  &__login {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    .user {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span {
+        margin-left: 0.5rem;
+      }
+    }
+    .loginActive {
+      margin: 0 1.5rem 0 1rem;
+    }
+  }
 }
- 
+.icon {
+  font-size: 1.8rem;
+}
+button {
+  span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header__login {
+    display: none;
+  }
+  .header__right {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    .icon-menu {
+      margin-right: 1.5rem;
+    }
+    .ant-drawer {
+      .header__login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+  }
+}

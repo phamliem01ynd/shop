@@ -1,0 +1,23 @@
+.category{
+  width: 90vw;
+  margin: 4rem auto;
+  height: auto;
+  &__list{
+    width: 10rem;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .image{
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius: 50%;
+      img{
+        padding: 1rem;
+        width: 6rem;
+        height: 6rem;
+        object-fit: contain;
+      }
+    }
+  }
+}

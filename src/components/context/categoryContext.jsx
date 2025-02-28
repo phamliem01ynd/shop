@@ -7,7 +7,7 @@ export const CategoryWrapper = ({children}) => {
     const [category, setCategory] = useState([]);
     useEffect(() => {
         const fetchApi = async () => {
-            const result = getCategories();
+            const result = await getCategories();
             setCategory(result);
         }
         fetchApi();
