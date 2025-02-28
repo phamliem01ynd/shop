@@ -10,11 +10,21 @@ import { FaCartPlus } from "react-icons/fa";
 import { FaBars } from "react-icons/fa";
 const Header = () => {
   const placeholders = ["laptop", "phone", "speaker", "airpoid", "electronic"];
+  let timeoutRef = null;
   const [placeholder, setPlaceholder] = useState(placeholders[0]);
   const { auth, setAuth } = useContext(authContext);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 576);
   const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
+  const handleMouseEnter = () => {
+    if (timeoutRef) clearTimeout(timeoutRef);
+    setOpenDrawer(true);
+  };
+  const handleMouseLeave = () => {
+    timeoutRef = setTimeout(() => {
+      setOpenDrawer(false);
+    }, 1000);
+  };
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 576);
     window.addEventListener("resize", handleResize);
@@ -37,6 +47,13 @@ const Header = () => {
             <Link to="/">
               <Logo />
             </Link>
+            <div
+              className="icon-menu"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <FaBars className="icon" />
+            </div>
           </Col>
           <Col xxl={8} xl={8} lg={8} md={8} sm={0} xs={0}>
             <div className="header__search">
@@ -48,7 +65,7 @@ const Header = () => {
           </Col>
           <Col xxl={8} xl={8} lg={8} md={8} sm={12} xs={12}>
             <div className="header__right">
-            <Select
+              <Select
                 defaultValue={"VI"}
                 style={{ width: 80 }}
                 onChange={handleOnChange}
@@ -57,7 +74,7 @@ const Header = () => {
                 <Select.Option value="ENG">ENG</Select.Option>
               </Select>
               {isMobile ? (
-                <div className="icon-menu" onClick={() => setOpenDrawer(true)}>
+                <div className="icon-menu">
                   <FaBars className="icon" />
                 </div>
               ) : (
@@ -110,10 +127,20 @@ const Header = () => {
           </Col>
         </Row>
         <Drawer
-          name="menu"
+          title="Menu"
           onClose={() => setOpenDrawer(false)}
           open={openDrawer}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          placement="top"
+          height={"150px"}
         >
+          <div className="header__menu">
+            <Link>Home</Link>
+            <Link>Shop</Link>
+            <Link>About</Link>
+            <Link>Cart</Link>
+          </div>
           <div className="header__login">
             {auth.isAuthenticated ? (
               <>

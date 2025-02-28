@@ -14,7 +14,6 @@ const HomePage = () => {
   const { product } = useContext(productContext);
   const [showConfetti, setShowConfetti] = useState(false);
   console.log(product);
-  
   useEffect(() => {
     if (localStorage.getItem("showConfetti") === "true") {
       setShowConfetti(true);

@@ -1,3 +1,25 @@
+@keyframes appearright {
+  from {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleRight {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 .Content {
   width: 100vw;
   height: auto;
@@ -17,11 +39,14 @@
   }
 }
 .Content2 {
+  animation: appearright ease-in-out 0.3s;
+  animation-timeline: view();
+  animation-range: entry 30%;
   width: 90%;
   margin: 0 auto;
 }
 .Content3 {
-  animation: appearright linear;
+  animation: scaleRight ease-in-out 0.3s;
   animation-timeline: view();
   animation-range: entry 30%;
   margin: 60px auto;
@@ -62,7 +87,7 @@
       display: flex;
       justify-content: start;
       flex-direction: column;
-      input{
+      input {
         width: 35rem;
       }
       button {
@@ -72,7 +97,7 @@
         background-color: #000;
         color: #fff;
         margin: 0.5rem 0;
-        span{
+        span {
           font-size: 14px;
         }
       }
@@ -86,37 +111,37 @@
   }
 }
 .Content4 {
-  animation: appearright linear;
+  animation: scaleRight ease-in-out 0.3s;
   animation-timeline: view();
   animation-range: entry 30%;
   width: 90%;
   margin: 0px auto 60px auto;
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  &__block{
+  &__block {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  &__detail{
+  &__detail {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid #000 ;
+    border-right: 1px solid #000;
     width: 20%;
     height: calc(auto + 3rem);
-    .icon{
+    .icon {
       font-size: 5rem;
       color: #0ccaf9;
       margin: 0 1.5rem;
     }
   }
-  &__title{
+  &__title {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    p{
+    p {
       font-size: 14px;
       opacity: 0.6;
     }
@@ -124,6 +149,9 @@
 }
 
 .Content5 {
+  animation: scaleRight ease-in-out 0.3s;
+  animation-timeline: view();
+  animation-range: entry 30%;
   width: 90%;
   margin: 0 auto 5rem auto;
   background-image: linear-gradient(to right, #94eaff, #0ccaf9);
@@ -131,29 +159,29 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  form{
+  form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    button{
+    button {
       margin: 1.5rem 0;
-      padding: 0.5rem 1.5rem 0.5rem 1.5rem!important;
-      span{
+      padding: 0.5rem 1.5rem 0.5rem 1.5rem !important;
+      span {
         font-size: 1.4rem;
       }
     }
-    .information{
+    .information {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.5rem;
-      .name{
+      .name {
         margin-right: 1.5rem;
       }
     }
-    .title{
-      input:first-child{
+    .title {
+      input:first-child {
         margin-bottom: 1.5rem;
       }
     }
@@ -161,9 +189,9 @@
 }
 
 @media (max-width: 768px) {
-  .Content4{
-    .title{
-      p{
+  .Content4 {
+    .title {
+      p {
         display: none;
       }
     }
