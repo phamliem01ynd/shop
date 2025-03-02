@@ -1,0 +1,15 @@
+.product{
+  &__add{
+      margin-bottom: 25px;
+  }
+  &__modal{
+      display: flex;
+      justify-content: space-between;
+  }
+  &__modal1{
+      margin-right: 25px;
+  }
+}
+.ant-input{
+  width: 400px;
+}

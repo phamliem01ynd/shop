@@ -5,6 +5,11 @@ import Register from "../pages/login/register";
 import HomePage from "../pages/home/homePage";
 import CategoryPage from "../pages/category/categoryPage";
 import ShopPage from "../pages/shop/shopPage";
+import ProductPage from "../pages/product/productPage";
+import AdminPage from "../pages/admin/adminPage";
+import User from "../components/admin/user";
+import ProductAdmin from "../components/admin/productAdmin";
+import Category from "../components/admin/categoryAdmin";
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -17,18 +22,39 @@ export const routes = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
-      },  
+      },
       {
         path: "",
         element: <HomePage />,
       },
       {
-        path:"category/:categoryName",
-        element:<CategoryPage/>
+        path: "category/:categoryName",
+        element: <CategoryPage />,
       },
       {
-        path:"shop",
-        element:<ShopPage/>
+        path: "shop",
+        element: <ShopPage />,
+      },
+      {
+        path: "product/:productName",
+        element: <ProductPage />,
+      },
+      {
+        path: "admin",
+        element: <AdminPage/>,
+        children:[{
+          path:"user",
+          element:<User/>
+        },
+        {
+          path:"product",
+          element:<ProductAdmin/>,
+        },
+        {
+          path:"category",
+          element:<Category/>
+        }
+      ]
       }
     ],
   },

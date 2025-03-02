@@ -1,0 +1,20 @@
+.admin{
+  width: 90vw;
+  height: 60rem;
+  margin: 5rem auto;
+  &__menu{
+    width: 100%;
+    height: 100%;
+    .ant-menu{
+      width: 100%;
+      height: 60rem;
+      background-image: linear-gradient(to right, #89c1f6, #1d92ff);
+    }
+  }
+  &__content{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: auto;
+    height: 60rem;
+  }
+}
