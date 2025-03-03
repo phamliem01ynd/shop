@@ -9,8 +9,10 @@ import { IoRocketOutline, IoWalletOutline } from "react-icons/io5";
 import { MdOutlineChangeCircle } from "react-icons/md";
 import { IoIosPhonePortrait } from "react-icons/io";
 import { CiGift } from "react-icons/ci";
+import { languageContext } from "../../components/context/languageContext";
 
 const HomePage = () => {
+  const { translations } = useContext(languageContext);
   const { product } = useContext(productContext);
   const [showConfetti, setShowConfetti] = useState(false);
   console.log(product);
@@ -51,15 +53,15 @@ const HomePage = () => {
         </div>
         <div className="Content2">
           <div className="Content2__Product">
-            <h1 style={{ margin: "20px 0px 20px 0px" }}>Sản Phẩm</h1>
+            <h1 style={{ margin: "20px 0px 20px 0px" }}>{translations.product}</h1>
             <Product product={product} />
           </div>
           <div className="Content2__Sale">
-            <h1 style={{ margin: "20px 0px 20px 0px" }}>Sản Phẩm Bán Chạy</h1>
+            <h1 style={{ margin: "20px 0px 20px 0px" }}>{translations.product_best_selling}</h1>
             <Product product={product.filter((item) => item.sold >= 25)} />
           </div>
           <div className="Content2__SupperDiscount">
-            <h1 style={{ margin: "20px 0px 20px 0px" }}>Sản Phẩm Siêu Sale</h1>
+            <h1 style={{ margin: "20px 0px 20px 0px" }}>{translations.product_supper_sale}</h1>
             <Product product={product.filter((item) => item.discount >= 15)} />
           </div>
         </div>
@@ -68,16 +70,13 @@ const HomePage = () => {
             <img src="images/carousel/macbook.jpg" alt="macbook" />
           </div>
           <div className="Content3__content">
-            <div className="title1">Đăng ký với EnndmeShop ngay!</div>
+            <div className="title1">{translations.login_with_enndme_shop}</div>
             <div className="title2">
-              Tận hưởng dịch vụ mua sắm an toàn, tiện lợi, nhanh chóng cùng với
-              nhiều dịch vụ khác áp dụng cho toàn bộ đối tượng. Đến với chúng
-              tôi để tìm được sản phẩm công nghệ phù hợp với bản thân và gia
-              đinh...
+              {translations.content3_title}
             </div>
             <div className="form">
               <Input placeholder="Địa chỉ email" />
-              <Button>Gửi</Button>
+              <Button>{translations.send}</Button>
             </div>
             <div>
               <div className="contact">
@@ -93,8 +92,8 @@ const HomePage = () => {
                 <IoRocketOutline />
               </div>
               <div className="title">
-                <h3>Giao hàng miễn phí</h3>
-                <p>Dành cho các đơn hàng trên 10 triệu</p>
+                <h3>{translations.content4_title1}</h3>
+                <p>{translations.content4_des1}</p>
               </div>
             </div>
             <div className="Content4__detail">
@@ -102,8 +101,8 @@ const HomePage = () => {
                 <MdOutlineChangeCircle />
               </div>
               <div className="title">
-                <h3>Đổi trả 30 ngày</h3>
-                <p>Nếu sản phẩm có vấn đề</p>
+                <h3>{translations.content4_title2}</h3>
+                <p>{translations.content4_des2}</p>
               </div>
             </div>
             <div className="Content4__detail">
@@ -111,8 +110,8 @@ const HomePage = () => {
                 <IoWalletOutline />
               </div>
               <div className="title">
-                <h3>Thanh toán an toàn</h3>
-                <p>Tích hợp các phương thức thanh toán mới nhất</p>
+                <h3>{translations.content4_title3}</h3>
+                <p>{translations.content4_des3}</p>
               </div>
             </div>
             <div className="Content4__detail">
@@ -120,8 +119,8 @@ const HomePage = () => {
                 <IoIosPhonePortrait />
               </div>
               <div className="title">
-                <h3>Hỗ trợ 24/7</h3>
-                <p>Đường dây nóng (+84)987465321</p>
+                <h3>{translations.content4_title4}</h3>
+                <p>{translations.content4_des4}</p>
               </div>
             </div>
             <div className="Content4__detail">
@@ -129,14 +128,14 @@ const HomePage = () => {
                 <CiGift />
               </div>
               <div className="title">
-                <h3>Dịch vụ quà tặng</h3>
-                <p>Hỗ trợ nhiều voucher giảm giá sốc</p>
+                <h3>{translations.content4_title5}</h3>
+                <p>{translations.content4_des5}</p>
               </div>
             </div>
           </div>
         </div>
         <div className="Content5">
-          <h2>Liên hệ</h2>
+          <h2>{translations.contact}</h2>
           <Form>
             <div className="contact">
               <div className="information">
@@ -152,7 +151,7 @@ const HomePage = () => {
                 <Input placeholder="Nội dung tin nhắn" />
               </div>
             </div>
-            <Button>Gửi</Button>
+            <Button>{translations.send}</Button>
           </Form>
         </div>
       </div>

@@ -8,15 +8,21 @@ import { routes } from "./routes/router";
 import { AuthWrapper } from "./components/context/authContext";
 import { ProductWrapper } from "./components/context/productContext";
 import { CategoryWrapper } from "./components/context/categoryContext";
+import { ThemeWrapper } from "./components/context/themeContext";
+import LanguageWrapper from "./components/context/languageContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <AuthWrapper>
-    <CategoryWrapper>
-      <ProductWrapper>
-        <RouterProvider router={routes} />
-      </ProductWrapper>
-    </CategoryWrapper>
-  </AuthWrapper>
+  <LanguageWrapper>
+    <ThemeWrapper>
+      <AuthWrapper>
+        <CategoryWrapper>
+          <ProductWrapper>
+            <RouterProvider router={routes} />
+          </ProductWrapper>
+        </CategoryWrapper>
+      </AuthWrapper>
+    </ThemeWrapper>
+  </LanguageWrapper>
 );
 
 // If you want to start measuring performance in your app, pass a function

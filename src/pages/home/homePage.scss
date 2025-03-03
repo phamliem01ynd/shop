@@ -176,11 +176,16 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.5rem;
+      input {
+        width: 19rem;
+      }
       .name {
         margin-right: 1.5rem;
       }
     }
     .title {
+      display: flex;
+      flex-direction: column;
       input:first-child {
         margin-bottom: 1.5rem;
       }

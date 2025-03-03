@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Row, Col, Input, Select, Badge, Button, Drawer } from "antd";
+import { Row, Col, Input, Select, Badge, Button, Drawer, Dropdown } from "antd";
 import "./header.scss";
 import Logo from "../logo";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,8 +8,38 @@ import { authContext } from "../context/authContext";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaCartPlus } from "react-icons/fa";
 import { FaBars } from "react-icons/fa";
+import ThemeToggle from "../theme/theme";
+import { languageContext } from "../context/languageContext";
 const Header = () => {
   const placeholders = ["laptop", "phone", "speaker", "airpoid", "electronic"];
+  const { toggleLanguage, translations } = useContext(languageContext);
+
+  const handleLogOut = () => {
+    localStorage.clear("access_token");
+    setAuth({
+      isAuthenticated: false,
+      user: {
+        email: "",
+        name: "",
+      },
+    });
+    setOpenDrawer(false);
+  };
+  const items = [
+    {
+      key: "1",
+      label: <Link to={"/"}>{translations.personal_profile}</Link>,
+    },
+    {
+      key: "2",
+      label: <Link to={"/"}>{translations.order}</Link>,
+    },
+    {
+      key: "3",
+      label: <span onClick={handleLogOut}>{translations.logout}</span>,
+    },
+  ];
+
   let timeoutRef = null;
   const [placeholder, setPlaceholder] = useState(placeholders[0]);
   const { auth, setAuth } = useContext(authContext);
@@ -38,7 +68,6 @@ const Header = () => {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
-  const handleOnChange = () => {};
   return (
     <header>
       <div className="header">
@@ -57,7 +86,7 @@ const Header = () => {
           </Col>
           <Col xxl={8} xl={8} lg={8} md={8} sm={0} xs={0}>
             <div className="header__search">
-              <Input placeholder={`Tìm kiếm : "${placeholder}"`} />
+              <Input placeholder={`${translations.search}: "${placeholder}"`} />
               <div className="icon">
                 <FaSearch />
               </div>
@@ -66,9 +95,9 @@ const Header = () => {
           <Col xxl={8} xl={8} lg={8} md={8} sm={12} xs={12}>
             <div className="header__right">
               <Select
-                defaultValue={"VI"}
+                defaultValue={"Langugage"}
                 style={{ width: 80 }}
-                onChange={handleOnChange}
+                onChange={toggleLanguage}
               >
                 <Select.Option value="VI">VI</Select.Option>
                 <Select.Option value="ENG">ENG</Select.Option>
@@ -82,8 +111,12 @@ const Header = () => {
                   {auth.isAuthenticated ? (
                     <>
                       <div className="user">
-                        <FaRegUserCircle className="icon" />
-                        <span>{auth.user.name}</span>
+                        <Dropdown menu={{ items }} arrow placement="bottom">
+                          <div className="menu">
+                            <FaRegUserCircle className="icon" />{" "}
+                            <span>{auth.user.name}</span>
+                          </div>
+                        </Dropdown>
                       </div>
                       <div className="loginActive">
                         <Badge count={5} size="small">
@@ -94,29 +127,15 @@ const Header = () => {
                           </div>
                         </Badge>
                       </div>
-                      <Button
-                        onClick={() => {
-                          localStorage.clear("access_token");
-                          setAuth({
-                            isAuthenticated: false,
-                            user: {
-                              email: "",
-                              name: "",
-                            },
-                          });
-                        }}
-                      >
-                        Đăng Xuất
-                      </Button>
                     </>
                   ) : (
                     <>
                       <div className="loginNoActive">
                         <Link to="/login">
-                          <Button>Đăng Nhập</Button>
+                          <Button>{translations.login}</Button>
                         </Link>
                         <Link to="/register">
-                          <Button>Đăng Ký</Button>
+                          <Button>{translations.register}</Button>
                         </Link>
                       </div>
                     </>
@@ -126,6 +145,7 @@ const Header = () => {
             </div>
           </Col>
         </Row>
+
         <Drawer
           title="Menu"
           onClose={() => setOpenDrawer(false)}
@@ -157,21 +177,7 @@ const Header = () => {
                     </div>
                   </Badge>
                 </div>
-                <Button
-                  onClick={() => {
-                    localStorage.clear("access_token");
-                    setAuth({
-                      isAuthenticated: false,
-                      user: {
-                        email: "",
-                        name: "",
-                      },
-                    });
-                    setOpenDrawer(false);
-                  }}
-                >
-                  Đăng Xuất
-                </Button>
+                <Button onClick={handleLogOut}>Đăng Xuất</Button>
               </>
             ) : (
               <>
