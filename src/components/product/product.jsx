@@ -1,4 +1,4 @@
-import { Button, Row, Col, Modal, Rate } from "antd";
+import { Button, Row, Col, Modal, Rate, notification, message } from "antd";
 import React, { useContext, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
@@ -7,12 +7,15 @@ import { FaRegEye } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import "./product.scss";
 import { categoryContext } from "../context/categoryContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../redux/action";
 const Product = (props) => {
   const { product } = props;
   const { category } = useContext(categoryContext);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [productDetail, setProductDetail] = useState(null);
-
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
   const filterProductDetail = productDetail
     ? product.find((item) => item.id === productDetail)
     : product;
@@ -21,9 +24,7 @@ const Product = (props) => {
   const handleOK = () => {
     setOpen(false);
   };
-  const handleCancel = () => {
-    setOpen(false);
-  };
+  const handleCancel = () => {};
   const itemPerPage = 4;
   const handleClickReturn = () => {
     setTimeout(() => {
@@ -37,7 +38,14 @@ const Product = (props) => {
       );
     }, 500);
   };
-  const handleAddToCart = () => {};
+  const handleAddToCart = (item) => {
+    if (cart.some((itemcart) => itemcart.id === item.id)) {
+      message.warning(`${item.name} đã có trong giỏ hàng`);
+      return;
+    }
+    dispatch(addToCart(item.id, item));
+    message.success(`${item.name} đã được thêm vào giỏ hàng thành công`);
+  };
   const handleShowModal = (item) => {
     setOpen(true);
     setProductDetail(item.id);

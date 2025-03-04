@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { productContext } from "../../components/context/productContext";
 import "./productPage.scss";
@@ -9,12 +9,25 @@ import { RiRefund2Line } from "react-icons/ri";
 import { IoWalletOutline } from "react-icons/io5";
 import { RiBillLine } from "react-icons/ri";
 import { categoryContext } from "../../components/context/categoryContext";
+import { useDispatch, useSelector } from "react-redux";
+import { updateQuantity } from "../../components/redux/action";
+import { languageContext} from "../../components/context/languageContext";
 function ProductPage() {
   const params = useParams();
   console.log(params);
   const { category } = useContext(categoryContext);
   const { product } = useContext(productContext);
   const [isZoom, setIsZoom] = useState(false);
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const Ref = useRef();
+  const { translations } = useContext(languageContext)
+  const handleAddQuantity = () => {
+
+  };
+  const handleReduceQuantity = () => {
+
+  };
 
   console.log(category);
   const filteredProduct = product.find(
@@ -72,10 +85,20 @@ function ProductPage() {
                 </span>
               </div>
               <div className="quantity">
-                <span>Số lượng: </span> <Button>-</Button>
-                <Input readOnly></Input>
-                <Button>+</Button>
-                <span>{filteredProduct.quantity} sản phẩm có sẵn</span>
+                <span>Số lượng: </span>{" "}
+                <Button onClick={() => handleReduceQuantity(filteredProduct)}>
+                  -
+                </Button>
+                <Input
+                  readOnly
+                  defaultValue={1}
+                  inputRef={Ref}
+                  style={{ textAlign: "center" }}
+                ></Input>
+                <Button onClick={() => handleAddQuantity(filteredProduct)}>
+                  +
+                </Button>
+                <span style={{color:'red'}}>{filteredProduct.quantity} sản phẩm có sẵn</span>
               </div>
               <div>
                 <Button style={{ background: "#000", color: "#fff" }}>
@@ -85,7 +108,7 @@ function ProductPage() {
             </div>
           </div>
           <div className="ProductPageDetail">
-            <div className="description">
+            <div className="description"> 
               <h2>Mô tả sản phẩm</h2>
               <span>{filteredProduct.description}</span>
               <h2>Chính sách</h2>

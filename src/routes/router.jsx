@@ -10,6 +10,7 @@ import AdminPage from "../pages/admin/adminPage";
 import User from "../components/admin/user";
 import ProductAdmin from "../components/admin/productAdmin";
 import Category from "../components/admin/categoryAdmin";
+import CartPage from "../pages/cart/cartPage";
 export const routes = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,10 @@ export const routes = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path:"cart",
+        element:<CartPage/>
       },
       {
         path: "",

@@ -9,20 +9,24 @@ import { AuthWrapper } from "./components/context/authContext";
 import { ProductWrapper } from "./components/context/productContext";
 import { CategoryWrapper } from "./components/context/categoryContext";
 import { ThemeWrapper } from "./components/context/themeContext";
+import { Provider } from "react-redux";
 import LanguageWrapper from "./components/context/languageContext";
+import store from "./components/redux/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <LanguageWrapper>
-    <ThemeWrapper>
-      <AuthWrapper>
-        <CategoryWrapper>
-          <ProductWrapper>
-            <RouterProvider router={routes} />
-          </ProductWrapper>
-        </CategoryWrapper>
-      </AuthWrapper>
-    </ThemeWrapper>
-  </LanguageWrapper>
+  <Provider store = {store}>
+    <LanguageWrapper>
+      <ThemeWrapper>
+        <AuthWrapper>
+          <CategoryWrapper>
+            <ProductWrapper>
+              <RouterProvider router={routes} />
+            </ProductWrapper>
+          </CategoryWrapper>
+        </AuthWrapper>
+      </ThemeWrapper>
+    </LanguageWrapper>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

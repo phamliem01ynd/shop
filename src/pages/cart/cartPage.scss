@@ -1,0 +1,75 @@
+.container-cart {
+  width: 100vw;
+  height: auto;
+  background-image: linear-gradient(to right, #82cbf5, #f8c8c8da, #9cf27a);
+  min-height: 50rem;
+}
+
+.cart {
+  width: 90%;
+  margin: 50px auto 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  &__image {
+    img {
+      width: 200px;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  &__detail {
+    display: flex;
+    align-items: center;
+    .oldprice {
+      margin-right: 20px;
+      font-size: 16px;
+      text-decoration: line-through;
+    }
+    .newprice {
+      margin-left: 20px;
+      font-size: 16px;
+    }
+    .form {
+      margin: 0px 20px 0px 20px;
+    }
+    button {
+      background: #000;
+      color: #fff;
+      transition: transform 0.3 linear;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.carttop {
+  width: 100%;
+  padding: 10px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000;
+  color: #fff;
+  p {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  button:first-child {
+    margin-right: 20px;
+  }
+  button {
+    transition: transform 0.5 linear;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+.btn {
+  margin-top: 1rem;
+}

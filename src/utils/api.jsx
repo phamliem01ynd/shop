@@ -80,7 +80,16 @@ const createProductApi = async (
     console.log("loi khi call API >>>: ", error);
   }
 };
-
+const updateProductApi = async (id, quantity) => {
+  try {
+    const url_api = `api/product/${id}`;
+    const data = { quantity };
+    return axios.put(url_api, data);
+  } catch (error) {
+    console.log("loi khi call API >>>: ",error);
+    throw error
+  }
+};
 const deleteProduct = async (id) => {
   try {
     const URL_API = `api/product/${id}`;
@@ -124,4 +133,5 @@ export {
   deleteProduct,
   deleteCategory,
   createCategory,
+  updateProductApi
 };

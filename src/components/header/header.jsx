@@ -95,7 +95,7 @@ const Header = () => {
           <Col xxl={8} xl={8} lg={8} md={8} sm={12} xs={12}>
             <div className="header__right">
               <Select
-                defaultValue={"Langugage"}
+                defaultValue={"VI"}
                 style={{ width: 80 }}
                 onChange={toggleLanguage}
               >
