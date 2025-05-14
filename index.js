@@ -12,7 +12,6 @@ app.use(express.urlencoded({ extended: true })); // for form data
 
 app.use("/api", router);
 
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
